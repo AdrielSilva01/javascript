@@ -1,17 +1,41 @@
-function Futebol(time, corCamisa, AnoFundacao,) {
-    this.time = time;
-    this.cor = corCamisa;
-    this.AnoFundacao = AnoFundacao;
-    this.gol =function() {
-        console.log("gol"); 
 
+class Veiculo {
+    constructor(marca, modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
     }
 
+    ligar() {
+        throw new Error("Método 'ligar()' deve ser implementado pelas classes filhas.");
+    }
 }
 
-const TimeJoao = new Futebol("Flamengo", "vermelho", 1985);
-const TimeMaria = new Futebol("Vasco", "branco", 1898);
+class Carro extends Veiculo {
+    constructor(marca, modelo, cor) {
+        super(marca, modelo);
+        this.cor = cor;
+    }
 
+    ligar() {
+        return `O ${this.marca} ${this.modelo} está ligado.`;
+    }
+}
 
-console.log(TimeJoao);
-console.log(TimeMaria);
+class Moto extends Veiculo {
+    constructor(marca, modelo, cilindradas) {
+        super(marca, modelo);
+        this.cilindradas = cilindradas;
+    }
+
+    ligar() {
+        return `A ${this.marca} ${this.modelo} de ${this.cilindradas}cc está ligada.`;
+    }
+}
+
+const carro1 = new Carro("Toyota", "Corolla", "Prata");
+const moto1 = new Moto("Honda", "CBR600RR", 600);
+const carro2 = new Carro("Ford", "Fiesta", "Preto");
+
+console.log(carro1.ligar()); 
+console.log(moto1.ligar()); 
+console.log(carro2.ligar()); 
